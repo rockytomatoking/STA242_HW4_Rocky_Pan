@@ -25,3 +25,17 @@ summary_delay = function(airport, filename = "2008.csv"){
                  standard_deviation = sd(list_delay, na.rm = TRUE))
   return(summary)
 }  
+
+# Code for HW#4 using connections
+
+system("cmd >file", intern = TRUE)
+count = pipe("cut -f 17 -d , 2008.csv | egrep '(SMF|OAK|SFO|LAX)' | sort | uniq -c")
+readLines(count) 
+
+list = sapply(strsplit(readLines(pipe("egrep 'SFO' 2008.csv"))[-1], ","), '[[', 15)
+mean(as.numeric(list), na.rm = TRUE)
+sd(as.numeric(list), na.rm = TRUE)
+
+getcol = function(x = 15) {
+  sapply(strsplit(readLines(pipe("egrep 'SFO' 2008.csv"))[-1], ","), '[[', x)
+} # get any column of the desired file with SFO involved
