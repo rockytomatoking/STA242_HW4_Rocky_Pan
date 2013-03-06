@@ -1,0 +1,17 @@
+# Code for HW #4 using SQL
+# In shell 
+sqlite3 bob.db < airlineTable.sqlite
+# All .csv files are imported into "delays"
+
+select count(Origin) from delays where Origin = 'SFO';
+select count(Origin) from delays where Origin = 'SFO';
+select count(Origin) from delays where Origin = 'SFO';
+select count(Origin) from delays where Origin = 'SFO';
+
+select avg(ArrDelay) from delays where Origin = 'SFO';
+select avg(ArrDelay) from delays where Origin = 'SMF';
+select avg(ArrDelay) from delays where Origin = 'OAK';
+select avg(ArrDelay) from delays where Origin = 'LAX';
+
+select count(*) from delays 
+Group by Origin having Origin in ('LAX', 'OAK', 'SFO', 'SMF');
